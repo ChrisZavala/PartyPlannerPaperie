@@ -1,4 +1,3 @@
-// import react dependencies
 import React from "react";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from 'react-redux';
@@ -49,7 +48,9 @@ function ProductItem(item) {
         <div>{quantity} {pluralize("item", quantity)} in stock</div>
         <span>${price}</span>
       </div>
-      <button onClick={addToCart}>Add to cart</button>
+      <button onClick={addToCart} className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-2">
+        Add to cart
+      </button>
     </div>
   );
 }

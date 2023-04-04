@@ -1,15 +1,11 @@
-// import react dependencies
 import React from 'react';
 import { useDispatch } from 'react-redux';
-
-// import utils dependencies
 import { REMOVE_FROM_CART, UPDATE_CART_QUANTITY } from "../../utils/actions";
 import { idbPromise } from "../../utils/helpers";
 
 const CartItem = ({ item }) => {
   const dispatch = useDispatch();
 
-  // remove item with matching item._id from cart
   const removeFromCart = item => {
     dispatch({
       type: REMOVE_FROM_CART,
@@ -18,7 +14,6 @@ const CartItem = ({ item }) => {
     idbPromise('cart', 'delete', { ...item });
   };
 
-  // change value based on change to item.purchaseQuantity
   const onChange = (e) => {
     const value = e.target.value;
     if (value === '0') {
@@ -38,7 +33,7 @@ const CartItem = ({ item }) => {
   }
 
   return (
-    <div className="flex-row">
+    <div className="flex-row bg-opacity-100 bg-white">
       <div>
         <img
           src={`/images/${item.image}`}
@@ -59,6 +54,7 @@ const CartItem = ({ item }) => {
             role="img"
             aria-label="trash"
             onClick={() => removeFromCart(item)}
+            className="ml-2 cursor-pointer hover:text-red-500"
           >
             🗑️
           </span>
