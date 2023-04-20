@@ -43,19 +43,20 @@ function ProductList() {
   }
 
   return (
-    <div className="container mx-auto py-4 px-2">
+    <div className="container mx-auto py-4 px-2 text-center" >
       <h2 className="text-2xl font-bold mb-4">Our Products:</h2>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
         {state.products.length ? (
           filterProducts().map((product) => (
-            <ProductItem
-              key={product._id}
-              _id={product._id}
-              image={product.image}
-              name={product.name}
-              price={product.price}
-              quantity={product.quantity}
-            />
+            <div className="flex justify-center items-center text-center" key={product._id}>
+              <ProductItem
+                _id={product._id}
+                image={product.image}
+                name={product.name}
+                price={product.price}
+                quantity={product.quantity}
+              />
+            </div>
           ))
         ) : (
           <h3 className="text-xl font-semibold">You haven't added any products yet!</h3>
@@ -66,6 +67,16 @@ function ProductList() {
           <img src={spinner} alt="loading" />
         </div>
       )}
+
+      {/* Media query for smaller screens */}
+      <style jsx>{`
+        @media screen and (max-width: 768px) {
+          .grid {
+            margin-left: 10px;
+            margin-right: 10px;
+          }
+        }
+      `}</style>
     </div>
   );
 }
